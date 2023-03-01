@@ -1,6 +1,14 @@
+import { useDispatch } from 'react-redux';
 import img from '../logo.svg';
+import { searched } from '../redux/filters/actions';
 
 export default function Navbar() {
+  const dispatch = useDispatch();
+
+  const changeHandler = (e) => {
+    dispatch(searched(e.target.value));
+  };
+
   return (
     <nav className="py-4 2xl:px-6">
       <div className="container flex items-center justify-between">
@@ -31,6 +39,7 @@ export default function Navbar() {
               placeholder="Filter books..."
               className="search"
               id="lws-searchBook"
+              onChange={(e) => changeHandler(e)}
             />
           </div>
         </form>

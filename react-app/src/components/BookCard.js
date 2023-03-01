@@ -1,4 +1,13 @@
+import { useDispatch } from 'react-redux';
+import deleteBook from '../redux/books/thunk/deleteBook';
+
 export default function BookCard({ book }) {
+  const dispatch = useDispatch();
+
+  const handleDelete = (bookId) => {
+    dispatch(deleteBook(bookId));
+  };
+
   return (
     <div className="book-card">
       <img
@@ -27,7 +36,10 @@ export default function BookCard({ book }) {
                 />
               </svg>
             </button>
-            <button className="lws-delete">
+            <button
+              className="lws-delete"
+              onClick={() => handleDelete(book.id)}
+            >
               <svg
                 fill="none"
                 viewBox="0 0 24 24"

@@ -45,6 +45,13 @@ export default function BookList() {
               .filter((book) =>
                 filters.status === 'featured' ? book.featured === true : book
               )
+              .filter((book) =>
+                filters.searchTerm
+                  ? book.name
+                      .toLowerCase()
+                      .includes(filters.searchTerm.toLowerCase())
+                  : book
+              )
               .map((book) => <BookCard key={book.id} book={book} />)
           : 'NO BOOK TO SHOW'}
       </div>
