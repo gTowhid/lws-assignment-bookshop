@@ -129,7 +129,7 @@ export default function AddBook() {
               id="edit"
               onClick={(e) => editHandler(e)}
             >
-              Edit Book
+              Update Book
             </button>
           ) : (
             <button
