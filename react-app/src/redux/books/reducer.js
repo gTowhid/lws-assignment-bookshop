@@ -1,4 +1,4 @@
-import { ADDED, DELETED, LOADED } from './actionTypes';
+import { ADDED, DELETED, LOADED, EDITBOOK } from './actionTypes';
 
 const initialState = [];
 
@@ -23,6 +23,24 @@ const booksReducer = (state = initialState, action) => {
 
     case DELETED:
       return state.filter((book) => book.id !== action.payload);
+
+    case EDITBOOK:
+      return state.map((book) => {
+        if (book.id !== action.payload.id) {
+          return book;
+        }
+
+        return {
+          ...book,
+          name: action.payload.book.name,
+          author: action.payload.book.author,
+          thumbnail: action.payload.book.thumbnail,
+          price: action.payload.book.price,
+          rating: action.payload.book.rating,
+          featured: action.payload.book.featured,
+          id: action.payload.book.id,
+        };
+      });
 
     default:
       return state;

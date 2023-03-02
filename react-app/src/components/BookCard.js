@@ -1,11 +1,16 @@
 import { useDispatch } from 'react-redux';
 import deleteBook from '../redux/books/thunk/deleteBook';
+import { forEdit } from '../redux/edit/actions';
 
 export default function BookCard({ book }) {
   const dispatch = useDispatch();
 
   const handleDelete = (bookId) => {
     dispatch(deleteBook(bookId));
+  };
+
+  const handleEdit = (bookId) => {
+    dispatch(forEdit(bookId));
   };
 
   return (
@@ -21,7 +26,7 @@ export default function BookCard({ book }) {
             <span className="badge-success lws-Badge">featured</span>
           )}
           <div className="text-gray-500 space-x-2">
-            <button className="lws-edit">
+            <button className="lws-edit" onClick={() => handleEdit(book.id)}>
               <svg
                 fill="none"
                 viewBox="0 0 24 24"
