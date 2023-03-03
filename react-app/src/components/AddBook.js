@@ -115,7 +115,7 @@ export default function AddBook() {
               name="featured"
               className="w-4 h-4"
               defaultChecked={editId && book.featured}
-              onChange={(e) => (book.featured = e.target.checked)}
+              onClick={(e) => (book.featured = e.target.checked)}
             />
             <label for="featured" className="ml-2 text-sm">
               This is a featured book
